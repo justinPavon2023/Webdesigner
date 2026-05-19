@@ -3,14 +3,15 @@ const cors = require('cors');
 const { obtenerProductos } = require('./controllers/productoController');
 
 const app = express();
-const PORT = 3000;
+const PUERTO_API = 3000;
 
-app.use(cors()); // Permite que el frontend (React) se conecte al backend
+// Configuración de Middlewares globales
+app.use(cors()); // Habilita la comunicación cruzada con el servidor de Vite de React
 app.use(express.json());
 
-// RUTAS
+// Declaración formal de Endpoints del Negocio
 app.get('/api/productos', obtenerProductos);
 
-app.listen(PORT, () => {
-    console.log(` Servidor PyW corriendo en http://localhost:${PORT}`);
+app.listen(PUERTO_API, () => {
+    console.log(`  API REST de PyW Motorepuestos desplegada de forma correcta en http://localhost:${PUERTO_API}`);
 });
